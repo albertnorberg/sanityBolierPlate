@@ -6,9 +6,9 @@ const CTAColumn = ({ width, label, title, body, ctas = [] }) => {
 
   const actions = ctas
     .filter(c => c.title)
-    .map(c => {
+    .map((c, i) => {
       return (
-        <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+        <div key={i} className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
           <div className="flex items-center justify-start">
             <button className="mx-auto hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg">
               {c.title}
@@ -21,13 +21,13 @@ const CTAColumn = ({ width, label, title, body, ctas = [] }) => {
   return (
     <div className={className}>
       <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-        <a href="#" className="flex flex-wrap no-underline hover:no-underline">
+        <button className="flex flex-wrap no-underline hover:no-underline">
           <p className="w-full text-gray-600 text-xs md:text-sm px-6">{label}</p>
           <div className="w-full font-bold text-xl text-gray-800 px-6">{title}</div>
-          <p className="text-gray-800 text-base px-6 mb-5">
+          <div className="text-gray-800 text-base px-6 mb-5">
             <PortableText blocks={body} />
-          </p>
-        </a>
+          </div>
+        </button>
       </div>
       {actions}
     </div>
@@ -38,7 +38,7 @@ const CTAColumns = ({ title, columns }) => {
   const cols = columns
     .filter(c => !c.disabled)
     .map((c, i) => {
-      return <CTAColumn width={columns.length} key={c._key} {...c} />;
+      return <CTAColumn width={columns.length} key={c._key + i} {...c} />;
     });
 
   return (
