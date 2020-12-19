@@ -44,7 +44,6 @@ const useStyles = makeStyles(theme => ({
     padding: "0px 10px",
     textDecoration: "none",
     "&:hover": {
-      fontSize: "1.05rem",
       textDecoration: "underline"
     }
   }
@@ -65,8 +64,6 @@ const Header = ({ showNav, siteTitle, scrolled, textWhite = true, width }) => {
       query={query}
       render={data => {
         const navMenuItems = data?.sanityNavigationMenu?.items || [];
-
-        console.log({ navMenuItems });
 
         return (
           <nav id="header" className={headerClass}>

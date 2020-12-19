@@ -45,6 +45,8 @@ export const query = graphql`
 const Page = (props) => {
   const { data, errors } = props;
 
+  console.log({data})
+
   if (errors) {
     return (
       <Layout>
@@ -62,6 +64,7 @@ const Page = (props) => {
   }
 
   const page = data.page || data.route.page;
+  console.log("page._rawContent: ", page._rawContent);
 
   const content = (page._rawContent || [])
     .filter((c) => !c.disabled)
@@ -92,6 +95,8 @@ const Page = (props) => {
       }
       return el;
     });
+
+    
 
   const gradient = {
     from: (site.primaryColor && site.primaryColor.hex) || "#d53369",

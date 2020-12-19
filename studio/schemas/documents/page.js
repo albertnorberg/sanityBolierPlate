@@ -23,7 +23,7 @@ export default {
       description: 'Add, edit, and reorder sections',
       of: [
         { type: 'pricing' },
-        { type: 'uiComponentRef' },
+        { type: 'phxHero' },
         { type: 'hero' },
         { type: 'infoRows' },
         { type: 'ctaColumns' },

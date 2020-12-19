@@ -9,8 +9,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import HomeIcon from "@material-ui/icons/Home";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
-import CarIcon from "@material-ui/icons/DirectionsCar"
-import PageIcon from "@material-ui/icons/InsertDriveFile"
+import CarIcon from "@material-ui/icons/DirectionsCar";
+import PageIcon from "@material-ui/icons/InsertDriveFile";
 import { Link } from "gatsby";
 
 const useStyles = makeStyles(theme => {
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => {
     link: {
       transition: "all .4s",
       padding: "0px 10px",
-      textDecoration: "none",
+      textDecoration: "none"
     },
     menu: {
       backgroundColor: "rgba(0,0,0, 0.7)"
@@ -69,7 +69,7 @@ export default function SwipeableTemporaryDrawer(props) {
             <HomeIcon />
           </ListItemIcon>
           <Link className={classes.link} to="/">
-            Hem
+            Home
           </Link>
         </ListItem>
 
@@ -77,18 +77,13 @@ export default function SwipeableTemporaryDrawer(props) {
 
         {navMenuItems.map((item, index) => (
           <ListItem key={index}>
-            <ListItemIcon>
-              { item.route === "/buy" ? <CarIcon /> : <PageIcon />  }
-            </ListItemIcon>
-            
-            <a className={classes.link} href={item.route ? item.route : item.link}>
-                          {item.title}
-                        </a>
+            <ListItemIcon>{item.route === "/buy" ? <CarIcon /> : <PageIcon />}</ListItemIcon>
 
-            
+            <a className={classes.link} href={item.route ? item.route : item.link}>
+              {item.title}
+            </a>
           </ListItem>
         ))}
-
       </List>
       <Divider />
     </div>

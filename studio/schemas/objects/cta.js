@@ -11,9 +11,10 @@ export default {
   ],
   fields: [
     {
-      title: 'Title',
+      title: 'Title (required)',
       name: 'title',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.error('You have to provide a title.').required()
     },
     {
       title: 'Landing page',
