@@ -1,7 +1,11 @@
 import React from "react";
-import Header from "./header";
+import PhxHeader from "./phx/phxHeader";
 import Footer from "./footer";
 import "../styles/layout.css";
+import withWidth from '@material-ui/core/withWidth'
+import { theme } from "./phx/theme"
+import { ThemeProvider } from '@material-ui/core/styles';
+
 
 class Layout extends React.Component {
   constructor(props) {
@@ -37,11 +41,14 @@ class Layout extends React.Component {
       siteTitle,
       navMenuItems,
       textWhite = true,
+      width
     } = this.props;
     const { scrolled } = this.state;
+
     return (
       <>
-        <Header
+      <ThemeProvider theme={theme}>
+        <PhxHeader
           navMenuItems={navMenuItems}
           siteTitle={siteTitle}
           onHideNav={onHideNav}
@@ -49,12 +56,15 @@ class Layout extends React.Component {
           showNav={showNav}
           scrolled={scrolled}
           textWhite={textWhite}
+          width={width}
         />
         <>{children}</>
         <Footer siteTitle={siteTitle} />
+        </ThemeProvider>
       </>
     );
   }
 }
 
-export default Layout;
+export default withWidth()(Layout);
+// export default Layout;
